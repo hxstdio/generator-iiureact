@@ -57,10 +57,19 @@ class Iiureact extends Generator {
     // 创建src和demo文件夹
     mkdirp('src');
     mkdirp('demo');
+    mkdirp('vendor/scss');
 
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('src.index.scss.tpl'),
       this.destinationPath('src/index.scss'),
+      {
+        componentName: this.componentName
+      }
+    );
+
+    this.fs.copy(
+      this.templatePath('src.index.scss.tpl'),
+      this.destinationPath('demo/index.scss'),
       {
         componentName: this.componentName
       }
@@ -116,6 +125,11 @@ class Iiureact extends Generator {
         componentVersion: this.componentVersion,
         componentDesc: this.componentDesc
       }
+    );
+
+    this.fs.copy(
+      this.templatePath('mixins.scss.tpl'),
+      this.destinationPath('vendor/scss/mixins.scss')
     );
   }
 
