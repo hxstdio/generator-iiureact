@@ -131,6 +131,11 @@ class Iiureact extends Generator {
       this.templatePath('mixins.scss.tpl'),
       this.destinationPath('vendor/scss/mixins.scss')
     );
+
+    this.fs.copy(
+      this.templatePath('reset.scss.tpl'),
+      this.destinationPath('vendor/scss/reset.scss')
+    );
   }
 
   install() {
